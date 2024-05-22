@@ -14,7 +14,7 @@ header{
     align-items: center;
     padding: 18px 100px;
     transition: 0.5s linear;
-    background: linear-gradient(45deg, #87adfe, #ffb4d1);
+    background: linear-gradient(45deg, #87adfe, #ffb4d1);a
 }
 .logo img{
     width: 45%;
