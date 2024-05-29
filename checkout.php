@@ -35,7 +35,7 @@ include('layout/header.php');
 
         <h2 style="text-align: center; margin-top: 50px; border-top: 1px solid black; padding-top: 20px;">Pilih Tipe Pesanan Anda</h2>
         <div class="tipe-pesanan">
-            <div class="card-co" onclick="openOrderTypeModal('dine-in')">
+            <div class="card-co" onclick="selectOrderType('dine-in')">
             <img src="img/dine-svgrepo-com.svg">
                 <div class="card-co__content">
                     <p class="card-co__title">Dine In</p>
@@ -53,6 +53,55 @@ include('layout/header.php');
     <div class="co-container"></div>
 
     <button class="cancel-button-co" onclick="cancelCheckout()">Batalkan Pesanan</button>
+
+    <!-- Modal -->
+    <div id="orderTypeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModalCO('orderTypeModal')">&times;</span>
+        </div>
+    </div>
+
+    <!-- Modal untuk Dine In -->
+    <div id="dineInModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModalCO('dineInModal')">&times;</span>
+            <div>
+                <h2>Masukkan Tempat Duduk</h2>
+                <input type="text" id="seatNumber" placeholder="Nomor Tempat Duduk" style="margin-bottom: 10px;">
+            </div>
+            <button class="confirm-button" onclick="confirmDineInOrder()">
+                <span class="confirm-button-content">Selesaikan Pesanan</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal konfirmasi untuk Dine In -->
+    <div id="overlay" class="overlay"></div>
+    <div id="dineInConfirmationModal" class="alert-modal">
+        <div class="alert-modal-content">
+            <img id="alert-icon" src="img/alert-svgrepo-com.svg">
+            <p class="alert-title">ALERT!</p>
+            <p class="alert-desc">Apakah pesanan Anda<br>sudah benar?</p>
+            <div class="alert-button-container">
+                <button class="true" onclick="accDineInOrder()">Benar</button>
+                <button class="false" onclick="closeModalCO('dineInConfirmationModal')">Salah</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal konfirmasi untuk Take Away -->
+    <div id="overlay" class="overlay"></div>
+    <div id="takeAwayConfirmationModal" class="alert-modal">
+        <div class="alert-modal-content">
+            <img id="alert-icon" src="img/alert-svgrepo-com.svg">
+            <p class="alert-title">ALERT!</p>
+            <p class="alert-desc">Apakah pesanan Anda<br>sudah benar?</p>
+            <div class="alert-button-container">
+                <button class="true" onclick="confirmTakeAwayOrder()">Benar</button>
+                <button class="false" onclick="closeModalCO('takeAwayConfirmationModal')">Salah</button>
+            </div>
+        </div>
+    </div>
 
 <?php
 include('layout/footer.php');

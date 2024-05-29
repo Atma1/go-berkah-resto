@@ -48,15 +48,10 @@ include 'config/app.php';
     text-decoration: none;
     padding: 10px 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s;
 }
 .menu a:hover {
     border-radius: 0.8rem;
     background-color: #3B9CD1;
-    transform: scale(1.05);
-}
-.menu a:active {
-    transform: scale(1.05);
 }
 
 /* card */
@@ -79,6 +74,10 @@ include 'config/app.php';
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 
 .card-container {
@@ -126,14 +125,15 @@ include 'config/app.php';
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.8);
+            padding-top: 50px;
             animation: fadeIn 0.5s;
         }
         
         .modal-content {
             background-color: #92A2E0;
-            margin: 0 auto;
+            margin: 0 auto; /* Menengahkan modal */
             padding: 20px;
-            width: 30%;
+            width: 30%; /* Mengatur lebar konten modal */
             text-align: center;
             border-radius: 1.2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -150,7 +150,6 @@ include 'config/app.php';
             font-size: 35px;
             font-weight: 100;
             margin-right: 2%;
-            cursor: pointer;
         }
         .close:hover,
         .close:focus {
@@ -247,6 +246,23 @@ include 'config/app.php';
         }
         /* Modal End */
 
+        button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
         #preloader {
             position: fixed;
             top: 0;
@@ -278,15 +294,6 @@ include 'config/app.php';
             100% { opacity: 1; }
         }
 
-        @keyframes fadeOutModal {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-
         .quantity-container {
             align-items: center;
         }
@@ -313,43 +320,32 @@ include 'config/app.php';
         .checkout-container {
             padding: 20px;
         }
-        .checkout-title {
-            margin-top: -0.5%;
-            margin-bottom: -30px;
-            text-align: center;
-            font-weight: 900;
-            border-bottom: 1px solid black;
-            padding-bottom: 15px;
-        }
         .checkout-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #ddd;
         }
         .checkout-item h3 {
             margin: 0;
         }
         .checkout-total {
-            text-align: right;
-            margin-right: 10px;
-            margin-top: -10px;
-            margin-bottom: -30px;
-            font-size: 24px;
-            font-weight: 900;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
-        .ppn{
-            text-align: left;
-            margin-left: 10px;
-            font-weight: 100;
-            font-size: 13px;
-            font-style: italic;
+        .confirm-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
         .tipe-pesanan {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
         }
         input[type=text]{
             width: 90%;
@@ -359,43 +355,41 @@ include 'config/app.php';
             resize: vertical;
             font-size: 16px;
         }
-
-        .co-container {
-            flex: 1;
-        }
-
-        .cancel-button-co {
-            position: fixed;
-            background-color: rgb(230, 34, 77);
+        .card-co {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
             cursor: pointer;
-            box-sizing: border-box;
+            font-size: 24px;
+            margin-bottom: 3%;
+        }
+        .cancel-button-co {
+            background-color: red;
+            bottom: 0px;
+            display: block;
+            position: fixed;
+            margin-left: auto;
+            margin-right: auto;
             width: 100%;
             height: 6%;
-            color: #fff;
-            border: none;
+            border-radius: 0px;
             font-size: 20px;
-            transition: all 0.3s ease-in-out;
-            z-index: 1;
-            overflow: hidden;
+        }
+
+        .cancel-button-co:hover {
+            background-color: maroon;
             bottom: 0px;
-        }
-
-        .cancel-button-co::before{
-            content: "";
-            background-color: rgb(190, 30, 62);
-            width: 0;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            transition: width 700ms ease-in-out;
-            display: inline-block;
-        }
-
-        .cancel-button-co:hover::before {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
             width: 100%;
+            height: 6%;
         }
+
 
         /* Pahe */
         .quantity-input::-webkit-inner-spin-button,
@@ -451,12 +445,10 @@ include 'config/app.php';
                 border: none;
                 cursor: pointer;
                 text-transform: uppercase;
-                font-size: 15px;
+                font-size: 10px;
                 font-weight: 900;
                 color: #ffffff;
                 background-color: rgba(0, 0, 0, 0.5);
-                border-radius: 0.3rem;
-                padding: 10px 15px;
                 transition: transform 0.2s ease-in-out;
 
                 &:hover {
@@ -473,7 +465,7 @@ include 'config/app.php';
             }
         }
 
-        /* keranjang */
+        /* tes */
         .keranjang-container{
             position: fixed;
             bottom: 30px;
@@ -536,290 +528,8 @@ include 'config/app.php';
         transform: scale(0.95);
         }
 
-        /* delete */
-        .delete {
-        position: relative;
-        width: 100px;
-        height: 40px;
-        cursor: pointer;
-        border: 1px solid #cc0000;
-        background-color: #e50000;
-        overflow: hidden;
-        border-radius: 0.3rem;
-        margin-left: 10px;
-        }
-
-        .delete, .delete__icon, .delete__text {
-        transition: all 0.3s;
-        }
-
-        .delete .delete__text {
-        margin-left: -45%;
-        color: #fff;
-        font-weight: 600;
-        }
-
-        .delete .delete__icon {
-        position: absolute;
-        transform: translate(53px, -27px);
-        height: 100%;
-        width: 39px;
-        background-color: #cc0000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
-        .delete .svg {
-        width: 20px;
-        }
-
-        .delete:hover {
-        background: #cc0000;
-        }
-
-        .delete:hover .delete__text {
-        color: transparent;
-        }
-
-        .delete:hover .delete__icon {
-        width: 148px;
-        transform: translate(-20%, -70%);
-        }
-
-        .delete:active .delete__icon {
-        background-color: #b20000;
-        }
-
-        .delete:active {
-        border: 1px solid #b20000;
-        }
-
-        /* card pesanan */
-        .card-co {
-        cursor: pointer;
-        position: relative;
-        margin : 10px;
-        width: 200px;
-        height: 120px;
-        background-color: #34C2C2;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        perspective: 1000px;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card-co img {
-        width: 85px;
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card-co:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
-        }
-
-        .card-co__content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        background-color: #3289B8;
-        transform: rotateX(-90deg);
-        transform-origin: bottom;
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card-co:hover .card-co__content {
-        transform: rotateX(0deg);
-        }
-
-        .card-co__title {
-        font-size: 24px;
-        color: white;
-        text-align: center;
-        font-weight: 900;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-co:hover svg {
-        scale: 0;
-        }
-
-        /* input co */
-        #seatNumber {
-        border: none;
-        outline: none;
-        border-radius: 15px;
-        padding: 1em;
-        background-color: #C1C9E8;
-        box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
-        transition: 300ms ease-in-out;
-        text-align: center;
-        }
-
-        #seatNumber:focus {
-        background-color: #EFEFEF;
-        transform: scale(1.05);
-        box-shadow: 13px 13px 100px #969696,
-                    -13px -13px 100px #ffffff;
-        }
-
-        /* Button selesaikan pesanan */
-        .confirm-button {
-        position: relative;
-        overflow: hidden;
-        height: 3rem;
-        padding: 0 2rem;
-        border-radius: 0.5rem;
-        background: #2C77A0;
-        background-size: 400%;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        }
-
-        .confirm-button:hover::before {
-        transform: scaleX(1);
-        }
-
-        .confirm-button-content {
-        position: relative;
-        z-index: 1;
-        }
-
-        .confirm-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: scaleX(0);
-        transform-origin: 0 50%;
-        width: 100%;
-        height: inherit;
-        border-radius: inherit;
-        background: linear-gradient(
-            82.3deg,
-            rgba(150, 93, 233, 1) 10.8%,
-            rgba(99, 88, 238, 1) 94.3%
-        );
-        transition: all 0.475s;
-        }
-
-        /* tes */
-        .alert-modal {
-            display: none;
-            position: fixed;
-            width: 300px;
-            background-color: #92A2E0;
-            border-radius: 1.2rem;
-            overflow: hidden;
-            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
-            z-index: 3;
-            left: 40%;
-            top: 30%;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2;
-        }
-
-        .alert-modal-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        #alert-icon {
-            width: 75px;
-            margin-bottom: -15%;
-        }
-
-        .alert-title {
-            font-size: 40px;
-            font-weight: 800;
-            color: #ff0000;
-        }
-
-        .alert-desc {
-        text-align: center;
-        font-size: 16px;
-        font-weight: 500;
-        color: #242424;
-        margin-top: -10%;
-        }
-
-        .alert-button-container {
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
-        margin-top: 5%;
-        }
-
-        .true {
-        height: 3rem;
-        padding: 0 2rem;
-        background-color: #7b57ff;
-        transition-duration: .2s;
-        border: none;
-        color: rgb(241, 241, 241);
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 20px;
-        box-shadow: 0 4px 6px -1px #977ef3, 0 2px 4px -1px #977ef3;
-        transition: all .6s ease;
-        }
-
-        .false {
-        height: 3rem;
-        padding: 0 2rem;
-        background-color: #6d7dc0;
-        transition-duration: .2s;
-        color: rgb(241, 241, 241);
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 20px;
-        box-shadow: 0 4px 6px -1px #6575b3, 0 2px 4px -1px #bebdbd;
-        transition: all .6s ease;
-        }
-
-        .false:hover {
-        background-color: #8193df;
-        box-shadow: 0 10px 15px -3px #6575b3, 0 4px 6px -2px #bebdbd;
-        transition-duration: .2s;
-        }
-
-        .true:hover {
-        background-color: #9173ff;
-        box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
-        transition-duration: .2s;
-        }
-
-        /* Tampilan mobile android*/
-        @media only screen and (max-width: 360px) {
+        /* Tampilan mobile */
+        @media only screen and (max-width: 600px) {
             .container {
                 flex-direction: column;
             }
@@ -832,50 +542,11 @@ include 'config/app.php';
             .modal {
                 width: 100%; /* Mengatur lebar modal untuk layar kecil */
                 height: 100%; /* Mengatur tinggi modal untuk layar kecil */
-                padding-top: 30px;
             }
 
             .modal-content {
                 width: 80%;
                 margin: -15px auto;
-            }
-            .ppn {
-                text-align: right;
-                margin-right: 10px;
-            }
-            .alert-modal {
-                left: 8%;
-                top: 25%;
-            }
-        }
-
-        /* Tampilan mobile iphone*/
-        @media only screen and (min-width: 370px) and (max-width: 600px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .menu {
-                overflow-y: auto; /* Mengatur menu dapat digulir secara vertikal */
-                justify-content: flex-start;
-            }
-
-            .modal {
-                width: 100%; /* Mengatur lebar modal untuk layar kecil */
-                height: 100%; /* Mengatur tinggi modal untuk layar kecil */
-                padding-top: 40px;
-            }
-
-            .modal-content {
-                width: 80%;
-                margin: -15px auto;
-            }
-            .ppn {
-                text-align: right;
-                margin-right: 10px;
-            }
-            .alert-modal {
-                left: 15%;
             }
         }
 </style>
@@ -914,7 +585,7 @@ if ($current_page !== 'checkout.php') {
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCartModal()">&times;</span>
-            <h2 style="font-weight: 900;">Keranjang</h2>
+            <h2>Keranjang</h2>
             <div id="cartModalContent"></div>
         </div>
     </div>

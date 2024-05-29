@@ -4,20 +4,35 @@ include('layout/header.php');
 <div id="content" class="content">
 
         <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="img/PromoA1.png" alt="Image 1" onclick="openModalIndex(1)">
+                <img src="img/PromoA2.png" alt="Image 2" onclick="openModalIndex(2)">
+                <img src="img/PromoA3.png" alt="Image 3" onclick="openModalIndex(3)">
+            </div>
+            <button id="btn-index" class="prev" onclick="prevSlide()"><</button>
+            <button id="btn-index" class="next" onclick="nextSlide()">></button>
+            <div class="carousel-dots"></div>
+        </div>
+
+        <div class="carousel-container">
             <div class="carousel">
                 <div class="item active">
-                    <img class="img-crl" src="img/PromoA1.png" alt="Image 1" onclick="openModalIndex(24)"/>
+                    <img src="img/PromoA1.png" alt="Image 1" onclick="openModalIndex(1)"/>
+                    <p class="caption">Caption for Image 1</p>
                 </div>
                 <div class="item">
-                    <img class="img-crl" src="img/PromoA2.png" alt="Image 2" />
+                    <img src="https://bit.ly/3lkp5DW" alt="Image 2" />
+                    <p class="caption">Caption for Image 2</p>
                 </div>
                 <div class="item">
-                    <img class="img-crl" src="img/PromoA3.png" alt="Image 3" />
+                    <img src="https://bit.ly/3iMHuI1" alt="Image 3" />
+                    <p class="caption">Caption for Image 3</p>
                 </div>
             </div>
 
-            <button class="btn-index prev"><</button>
-            <button class="btn-index next">></button>
+            <button class="btn prev">Prev</button>
+            <button class="btn next">Next</button>
+            <div class="dots"></div>
         </div>
 
         <h2 style="text-align: center; margin-top: 50px; margin-bottom: -30px;">Mau Pesan Apa Hari Ini?</h2>
@@ -60,3 +75,4 @@ include('layout/header.php');
     </div>
 
 <?php include('layout/footer.php'); ?>
+

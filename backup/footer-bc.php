@@ -103,35 +103,42 @@
         }
 
         //Carousel
-        document.addEventListener("DOMContentLoaded", function () {
-            let carousel = document.querySelector(".carousel");
-            let items = carousel.querySelectorAll(".item");
+        let slideIndex = 0;
+        showSlides(slideIndex);
 
-            // Function to show a specific item
-            function showItem(index) {
-                items.forEach((item, idx) => {
-                item.classList.remove("active");
-                if (idx === index) {
-                    item.classList.add("active");
-                }
-                });
+        function prevSlide() {
+            showSlides(slideIndex -= 1);
+        }
+
+        function nextSlide() {
+            showSlides(slideIndex += 1);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("carousel-slide")[0].getElementsByTagName("img");
+            const dots = document.getElementsByClassName("dot");
+
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
             }
 
-            // Event listeners for buttons
-            document.querySelector(".prev").addEventListener("click", () => {
-                let index = [...items].findIndex((item) =>
-                item.classList.contains("active")
-                );
-                showItem((index - 1 + items.length) % items.length);
-            });
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
 
-            document.querySelector(".next").addEventListener("click", () => {
-                let index = [...items].findIndex((item) =>
-                item.classList.contains("active")
-                );
-                showItem((index + 1) % items.length);
-            });
-        });
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active-dot");
+            }
+
+            slides[slideIndex].classList.add("active");
+        }
 
     //Card index
     function goToPage(page) {
@@ -216,126 +223,88 @@
     }
 
     //Checkout
-    document.addEventListener('DOMContentLoaded', function() {
-        const decrementButton = document.getElementById('decrement');
-        const incrementButton = document.getElementById('increment');
-        const numberInput = document.getElementById('number');
-
-        decrementButton.addEventListener('click', function() {
-            numberInput.value = parseInt(numberInput.value) - 1;
-        });
-
-        incrementButton.addEventListener('click', function() {
-            numberInput.value = parseInt(numberInput.value) + 1;
-        });
-    });
-
-    function closeAllModals() {
-        const modals = document.querySelectorAll('.modal'); // Adjust this selector to include all modal classes you have
-        modals.forEach(modal => modal.style.display = 'none');
-        document.getElementById('overlay').style.display = 'none';
-    }
-
     function openOrderTypeModal(type) {
-        closeAllModals(); // Close all open modals first
         if (type === 'dine-in') {
             document.getElementById('dineInModal').style.display = "block";
-            document.getElementById('overlay').style.display = "block";
         } else if (type === 'take-away') {
             document.getElementById('takeAwayConfirmationModal').style.display = "block";
-            document.getElementById('overlay').style.display = "block";
         }
     }
-
     function closeModalCO(modalId) {
         document.getElementById(modalId).style.display = "none";
-        document.getElementById('overlay').style.display = "none";
     }
 
-    function confirmTakeAwayOrder() {
-        // Proses konfirmasi pesanan Take Away
-        fetch('clear_cart.php', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'thank_you.php';
-            } else {
-                alert("Terjadi kesalahan saat mengosongkan keranjang.");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function accDineInOrder(){
-        // Tambahkan pemanggilan clear_cart.php untuk membersihkan keranjang pesanan
-        fetch('clear_cart.php', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Redirect ke halaman thank_you.php setelah membersihkan keranjang
-                window.location.href = 'thank_you.php';
-            } else {
-                alert("Terjadi kesalahan saat mengosongkan keranjang.");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function confirmDineInOrder() {
-        closeAllModals();
-        document.getElementById('dineInConfirmationModal').style.display = "block";
-        document.getElementById('overlay').style.display = "block";
-    }
-
-    function selectOrderType(type) {
-        if (type === 'dine-in') {
-            openOrderTypeModal('dine-in');
-        } else if (type === 'take-away') {
-            completeOrder();
+        function confirmTakeAwayOrder() {
+            // Proses konfirmasi pesanan Take Away
+            fetch('clear_cart.php', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'thank_you.php';
+                } else {
+                    alert("Terjadi kesalahan saat mengosongkan keranjang.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
-    }
 
-    function completeOrder() {
-        var seatNumber = document.getElementById('seatNumber').value;
-        if (seatNumber) {
-            alert("Pesanan Anda telah dikonfirmasi untuk Dine In di tempat duduk nomor " + seatNumber);
-        } else {
-            alert("Pesanan Anda telah dikonfirmasi untuk Take Away.");
+        function accDineInOrder(){
+            // Tambahkan pemanggilan clear_cart.php untuk membersihkan keranjang pesanan
+            fetch('clear_cart.php', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect ke halaman thank_you.php setelah membersihkan keranjang
+                    window.location.href = 'thank_you.php';
+                } else {
+                    alert("Terjadi kesalahan saat mengosongkan keranjang.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
-        // Kosongkan keranjang setelah konfirmasi
-        fetch('clear_cart.php', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'thank_you.php';
-            } else {
-                alert("Terjadi kesalahan saat mengosongkan keranjang.");
+
+        function confirmDineInOrder() {
+            // Tambahkan kode untuk menampilkan modal konfirmasi Dine In
+            document.getElementById('dineInConfirmationModal').style.display = "block";
+        }
+
+        function selectOrderType(type) {
+            if (type === 'dine-in') {
+                openOrderTypeModal('dine-in');
+            } else if (type === 'take-away') {
+                completeOrder();
             }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+        }
 
-    function cancelCheckout() {
-        window.location.href = 'home.php';
-    }
+        function completeOrder() {
+            var seatNumber = document.getElementById('seatNumber').value;
+            if (seatNumber) {
+                alert("Pesanan Anda telah dikonfirmasi untuk Dine In di tempat duduk nomor " + seatNumber);
+            } else {
+                alert("Pesanan Anda telah dikonfirmasi untuk Take Away.");
+            }
+            // Kosongkan keranjang setelah konfirmasi
+            fetch('clear_cart.php', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'thank_you.php';
+                } else {
+                    alert("Terjadi kesalahan saat mengosongkan keranjang.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
 
-    //Universal modal
-    function displayModal() {
-        var modal = document.querySelector('.modal');
-        modal.style.display = 'block';
-    }
-
-    // Function to hide modal
-    function hideModal() {
-        var modal = document.querySelector('.modal');
-        modal.style.display = 'none';
-    }
+        function cancelCheckout() {
+            window.location.href = 'home.php';
+        }
 </script>
 
 </body>

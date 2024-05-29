@@ -8,10 +8,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         echo htmlspecialchars($item['nama']) . " - " . $item['harga'];
         echo "<br>";
         echo "<div>Jumlah: <input type='number' value='" . $item['jumlah'] . "' min='1' onchange='updateQuantity(" . $key . ", this.value)'>";
-        echo "<button class='delete' onclick='removeItem(" . $key . ")'>";
-        echo "<span class='delete__text'>Delete</span>";
-        echo "<span class='delete__icon'><svg class='svg' height='512' viewBox='0 0 512 512' width='512' xmlns='http://www.w3.org/2000/svg'><title></title><path d='M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'></path><line style='stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px' x1='80' x2='432' y1='112' y2='112'></line><path d='M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'></path><line style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' x1='256' x2='256' y1='176' y2='400'></line><line style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' x1='184' x2='192' y1='176' y2='400'></line><line style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' x1='328' x2='320' y1='176' y2='400'></line></svg></span>";
-        echo "</button>";
+        echo "<button onclick='removeItem(" . $key . ")'>Hapus</button>";
         echo "</div>";
         echo "</div>";
 
@@ -23,7 +20,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
     }
 
     // Tampilkan total harga
-    echo "<p style='font-size: 20px; font-weight: 700;'>Total Harga: Rp " . number_format($totalHarga, 0, ',', '.') . "</p>";
+    echo "<p>Total Harga: Rp " . number_format($totalHarga, 0, ',', '.') . "</p>";
 
     echo "<button class='co-btn' onclick='redirectToCheckout()'>";
     echo "<div>";
@@ -101,6 +98,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         font-size: 14px;
         font-weight: 500;
         line-height: 19px;
+        -webkit-appearance: none;
         -webkit-tap-highlight-color: transparent;
         padding: 17px 29px 17px 69px;
         transition: background 0.3s;
