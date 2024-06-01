@@ -266,7 +266,7 @@
                 window.location.href = 'rice-bowl.html';
                 break;
             case 'Makanan':
-                window.location.href = 'makanan.html';
+                window.location.href = 'makanan.php';
                 break;
             case 'Minuman':
                 window.location.href = 'minuman.html';

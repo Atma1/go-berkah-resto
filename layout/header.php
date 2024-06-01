@@ -827,7 +827,7 @@ if ($current_page !== 'checkout.php') {
     echo "<a href='home.php'>Home</a>";
     echo "<a href='paket_hemat.php'>Paket Hemat</a>";
     echo "<a href='#rice-bowl'>Rice Bowl</a>";
-    echo "<a href='#makanan'>Makanan</a>";
+    echo "<a href='makanan.php'>Makanan</a>";
     echo "<a href='#minuman'>Minuman</a>";
     echo "<a href='#juice'>Juice</a>";
     echo "<a href='#side-dish'>Side Dish</a>";
