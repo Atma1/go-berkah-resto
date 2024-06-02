@@ -30,7 +30,7 @@ include('layout/header.php');
 
         <div class="card-container">
             <div class="card-index" onclick="goToPage('Paket Hemat')">
-                <img src="paket-hemat.jpg" alt="Paket Hemat">
+                <img src="img/PromoB1.png" alt="Paket Hemat">
                 <h3>Paket Hemat</h3>
             </div>
             <div class="card-index" onclick="goToPage('Rice Bowl')">
