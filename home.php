@@ -30,27 +30,27 @@ include('layout/header.php');
 
         <div class="card-container">
             <div class="card-index" onclick="goToPage('Paket Hemat')">
-                <img src="img/PromoB1.png" alt="Paket Hemat">
+                <img src="img/paket_hemat.jpeg" alt="Paket Hemat">
                 <h3>Paket Hemat</h3>
             </div>
             <div class="card-index" onclick="goToPage('Rice Bowl')">
-                <img src="rice-bowl.jpg" alt="Rice Bowl">
+                <img src="img/rice_bowl.png" alt="Rice Bowl">
                 <h3>Rice Bowl</h3>
             </div>
             <div class="card-index" onclick="goToPage('Makanan')">
-                <img src="makanan.jpg" alt="Makanan">
+                <img src="img/makanan.jpeg" alt="Makanan">
                 <h3>Makanan</h3>
             </div>
             <div class="card-index" onclick="goToPage('Minuman')">
-                <img src="minuman.jpg" alt="Minuman">
+                <img src="img/minuman.jpeg" alt="Minuman">
                 <h3>Minuman</h3>
             </div>
             <div class="card-index" onclick="goToPage('Juice')">
-                <img src="juice.jpg" alt="Juice">
+                <img src="img/juice.jpeg" alt="Juice">
                 <h3>Juice</h3>
             </div>
             <div class="card-index" onclick="goToPage('Side Dish')">
-                <img src="side-dish.jpg" alt="Side Dish">
+                <img src="img/side_dish.jpeg" alt="Side Dish">
                 <h3>Side Dish</h3>
             </div>
         </div>
