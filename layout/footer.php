@@ -263,13 +263,13 @@
                 window.location.href = 'paket_hemat.php';
                 break;
             case 'Rice Bowl':
-                window.location.href = 'rice-bowl.html';
+                window.location.href = 'rice_bowl.php';
                 break;
             case 'Makanan':
                 window.location.href = 'makanan.php';
                 break;
             case 'Minuman':
-                window.location.href = 'minuman.html';
+                window.location.href = 'minuman.php';
                 break;
             case 'Juice':
                 window.location.href = 'juice.html';
