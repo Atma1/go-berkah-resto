@@ -35,7 +35,7 @@ include 'config/app.php';
         padding: 10px 20px;
     }
     .navbar img {
-        height: 50px;
+        height: 25px;
         margin-right: 10px;
     }
     .navbar h1 {
@@ -112,7 +112,9 @@ include 'config/app.php';
     cursor: pointer;
 }
 .card-index img {
-    width: 100%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 5px;
 }
 .card-index h3 {
@@ -816,7 +818,7 @@ include 'config/app.php';
 </head>
 <body>
 <div class="navbar">
-    <img src="img/HONDA.png" alt="Semoga Berkah">
+    <img src="img/berkah_logos.png" alt="Semoga Berkah">
     <h1>Semoga Berkah</h1>
 </div>
 
@@ -829,7 +831,6 @@ if ($current_page !== 'checkout.php') {
     echo "<a href='rice_bowl.php'>Rice Bowl</a>";
     echo "<a href='makanan.php'>Makanan</a>";
     echo "<a href='minuman.php'>Minuman</a>";
-    echo "<a href='#juice'>Juice</a>";
     echo "<a href='#side-dish'>Side Dish</a>";
     echo "</div>";
 }
