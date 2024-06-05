@@ -275,7 +275,7 @@
                 window.location.href = 'juice.html';
                 break;
             case 'Side Dish':
-                window.location.href = 'side-dish.html';
+                window.location.href = 'side-dish.php';
                 break;
             default:
                 break;
