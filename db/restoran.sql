@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 03:52 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Waktu pembuatan: 05 Jun 2024 pada 07.26
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `makanan`
+-- Struktur dari tabel `makanan`
 --
 
 CREATE TABLE `makanan` (
@@ -37,7 +37,7 @@ CREATE TABLE `makanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `makanan`
+-- Dumping data untuk tabel `makanan`
 --
 
 INSERT INTO `makanan` (`id`, `nama`, `harga`, `img`, `keterangan`, `kategori`) VALUES
@@ -46,9 +46,9 @@ INSERT INTO `makanan` (`id`, `nama`, `harga`, `img`, `keterangan`, `kategori`) V
 (2, 'PaHe 2', '0', '', '', 1),
 (3, 'PaHe 3', '0', '', '', 1),
 (4, 'Ayam Lada Hitam', '0', '', '', 2),
-(5, 'Ayam Saus Teriyaki', '0', '', '', 0),
-(6, 'Ayam Saus Telur Asin', '0', '', '', 0),
-(7, 'Ayam Saus Oriental', '0', '', '', 0),
+(5, 'Ayam Saus Teriyaki', '0', '', '', 2),
+(6, 'Ayam Saus Telur Asin', '0', '', '', 2),
+(7, 'Ayam Saus Oriental', '0', '', '', 2),
 (8, 'Nasi Goreng Putih', '0', '', '', 0),
 (9, 'Nasi Goreng Merah', '0', '', '', 0),
 (10, 'Nasi Goreng Jawa', '0', '', '', 0),
@@ -70,7 +70,7 @@ INSERT INTO `makanan` (`id`, `nama`, `harga`, `img`, `keterangan`, `kategori`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `minuman`
+-- Struktur dari tabel `minuman`
 --
 
 CREATE TABLE `minuman` (
@@ -82,7 +82,7 @@ CREATE TABLE `minuman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `minuman`
+-- Dumping data untuk tabel `minuman`
 --
 
 INSERT INTO `minuman` (`id`, `nama`, `harga`, `img`, `keterangan`) VALUES
@@ -110,7 +110,7 @@ INSERT INTO `minuman` (`id`, `nama`, `harga`, `img`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sidedish`
+-- Struktur dari tabel `sidedish`
 --
 
 CREATE TABLE `sidedish` (
@@ -122,7 +122,7 @@ CREATE TABLE `sidedish` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sidedish`
+-- Dumping data untuk tabel `sidedish`
 --
 
 INSERT INTO `sidedish` (`id`, `nama`, `harga`, `keterangan`, `img`) VALUES
@@ -141,41 +141,41 @@ INSERT INTO `sidedish` (`id`, `nama`, `harga`, `keterangan`, `img`) VALUES
 --
 
 --
--- Indexes for table `makanan`
+-- Indeks untuk tabel `makanan`
 --
 ALTER TABLE `makanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `minuman`
+-- Indeks untuk tabel `minuman`
 --
 ALTER TABLE `minuman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sidedish`
+-- Indeks untuk tabel `sidedish`
 --
 ALTER TABLE `sidedish`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `makanan`
+-- AUTO_INCREMENT untuk tabel `makanan`
 --
 ALTER TABLE `makanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `minuman`
+-- AUTO_INCREMENT untuk tabel `minuman`
 --
 ALTER TABLE `minuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `sidedish`
+-- AUTO_INCREMENT untuk tabel `sidedish`
 --
 ALTER TABLE `sidedish`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
