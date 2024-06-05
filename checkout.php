@@ -33,6 +33,14 @@ include('layout/header.php');
         }
         ?>
 
+        <div class="data-diri" style="margin-top: 30px;">
+            <h1 class="checkout-title">Data Diri</h1>
+            <h3 style="margin-top: 30px; margin-bottom: 5px; margin-left: 10px;">Nama: </h3>
+            <input type="text" name="costumer-name" id="costumer-name" style="margin-left: 10px;">
+            <h3 style="margin-top: 30px; margin-bottom: 5px; margin-left: 10px;">No HP: </h3>
+            <input type="text" name="costumer-number" id="costumer-number" style="margin-left: 10px;">
+        </div>
+
         <h2 style="text-align: center; margin-top: 50px; border-top: 1px solid black; padding-top: 20px;">Pilih Tipe Pesanan Anda</h2>
         <div class="tipe-pesanan">
             <div class="card-co" onclick="openOrderTypeModal('dine-in')">
