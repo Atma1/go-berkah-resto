@@ -322,6 +322,22 @@
 
     //Checkout
     function openOrderTypeModal(type) {
+        const costumerName = document.getElementById("costumer-name").value;
+        const costumerPhoneNumber = document.getElementById("costumer-number").value;
+
+        const inputFilled = costumerName && costumerPhoneNumber ? true : false;
+
+        if (!inputFilled) {
+            Swal.fire({
+                title: "Tolong isi data diri Anda!",
+                text: "Pastikan nama dan nomor HP Anda terisi.",
+                icon: "warning",
+                showCancelButton: false,
+                background: "#FFE8D6"
+            })
+            return;
+        }
+
         if (type === 'dine-in') {
             async function askSeatNumber() {
                 const { value: text } = await Swal.fire({
