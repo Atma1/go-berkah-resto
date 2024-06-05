@@ -426,11 +426,11 @@ include 'config/app.php';
         /* tombol keranjang */
         .keranjang-container{
             position: fixed;
-            bottom: 30px;
+            top: 0;
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: right;
+            align-items:end;
             z-index: 1;
         }
 
@@ -831,7 +831,7 @@ if ($current_page !== 'checkout.php') {
     echo "<a href='rice_bowl.php'>Rice Bowl</a>";
     echo "<a href='makanan.php'>Makanan</a>";
     echo "<a href='minuman.php'>Minuman</a>";
-    echo "<a href='#side-dish'>Side Dish</a>";
+    echo "<a href='side-dish.php'>Side Dish</a>";
     echo "</div>";
 }
 ?>
