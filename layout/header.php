@@ -818,8 +818,8 @@ include 'config/app.php';
 </head>
 <body>
 <div class="navbar">
-    <img src="img/berkah_logos.png" alt="Semoga Berkah">
-    <h1>Semoga Berkah</h1>
+    <h1 style="margin-right: 10px;">Semoga</h1>
+    <img src="img/berkah_logos.png" alt="Berkah">
 </div>
 
 <?php
