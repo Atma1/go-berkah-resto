@@ -45,10 +45,6 @@ include('layout/header.php');
                 <img src="img/minuman.jpeg" alt="Minuman">
                 <h3>Minuman</h3>
             </div>
-            <div class="card-index" onclick="goToPage('Juice')">
-                <img src="img/juice.jpeg" alt="Juice">
-                <h3>Juice</h3>
-            </div>
             <div class="card-index" onclick="goToPage('Side Dish')">
                 <img src="img/side_dish.jpeg" alt="Side Dish">
                 <h3>Side Dish</h3>
