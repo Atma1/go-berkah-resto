@@ -1,11 +1,26 @@
-import {foo} from './util.js';
+import {getProduct} from './util.js';
 
 
 const select = document.getElementById("jenis-produk");
 
 const table = new gridjs.Grid({
-    columns: ["Nama Produk",
+    sort: true,
+    search: true,
+    columns: [
+            {
+                name: "id",
+                hidden: true
+            },
+            "Nama Produk",
             "Harga",
+            {
+                name: "keterangan",
+                hidden: true
+            },
+            {
+                name: "img",
+                hidden: true
+            },
             {
                 name: "Aksi",
                 formatter: (_, row) => {
@@ -23,14 +38,13 @@ const table = new gridjs.Grid({
     }
 ).render(document.getElementById("wrapper"));;
 
-const onSelectChange = () => {
+const onSelectChange = async () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
-    if (selected == "makanan") {
-        table.updateConfig({data: a}).forceRender();
-    } else {
-        table.updateConfig({data: b}).forceRender();
-    }
+    const data = await getProduct(selected);
+    const dataArray = data.map((dataObject) => Object.values(dataObject));
+    console.log(dataArray);
+    table.updateConfig({data: dataArray}).forceRender();
 }
 
 const onButtonClick = () => {
