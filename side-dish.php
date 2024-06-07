@@ -5,23 +5,25 @@ $sql = "SELECT * FROM sidedish";
 $result = $conn->query($sql);
 ?>
 
-<div class="card-container">
-    <?php
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<div class='card' data-index='" . $row['id'] . "' onclick='openModal(\"" . $row["nama"] . "\", \"data:img/png;base64," . base64_encode($row["img"]) . "\", \"" . $row["keterangan"] . "\", \"" . $row["harga"] . "\")'>";
-                echo '<img src="data:img/png;base64,'.base64_encode($row['img']).'" width="250" height="250"/>';
-                echo "<div style='display: flex; flex-direction: column;'>";
-                    echo "<h3 style='font-weight: bolder;'>" . $row["nama"] . "</h3>";
-                    echo "<h3 style='font-size: 16px;'>" . $row["harga"] . "</h3>";
+<div class="sidedish-container">
+    <div class="card-container">
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='card' data-index='" . $row['id'] . "' onclick='openModal(\"" . $row["nama"] . "\", \"data:img/png;base64," . base64_encode($row["img"]) . "\", \"" . $row["keterangan"] . "\", \"" . $row["harga"] . "\")'>";
+                    echo '<img src="data:img/png;base64,'.base64_encode($row['img']).'" width="250" height="250"/>';
+                    echo "<div style='display: flex; flex-direction: column;'>";
+                        echo "<h3 style='font-weight: bolder;'>" . $row["nama"] . "</h3>";
+                        echo "<h3 style='font-size: 16px;'>" . $row["harga"] . "</h3>";
+                    echo "</div>";
                 echo "</div>";
-            echo "</div>";
+            }
+        } else {
+            echo "Tidak ada data.";
         }
-    } else {
-        echo "Tidak ada data.";
-    }
-    $conn->close();
-    ?>
+        $conn->close();
+        ?>
+    </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

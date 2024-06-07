@@ -331,7 +331,6 @@ include 'config/app.php';
         .checkout-total {
             text-align: right;
             margin-right: 10px;
-            margin-top: -10px;
             margin-bottom: -30px;
             font-size: 24px;
             font-weight: 900;
@@ -386,6 +385,10 @@ include 'config/app.php';
             width: 100%;
         }
 
+        .form-control {
+            background-color: #fef6ef;
+        }
+
         /* Carousel */
         .carousel-container {
             width: 100%;
@@ -426,11 +429,11 @@ include 'config/app.php';
         /* tombol keranjang */
         .keranjang-container{
             position: fixed;
-            top: 0;
+            bottom: 10px;
             width: 100%;
             display: flex;
-            justify-content: right;
-            align-items:end;
+            justify-content: center;
+            align-items: center;
             z-index: 1;
         }
 
@@ -750,6 +753,31 @@ include 'config/app.php';
             background: none !important;
         }
 
+        /* padding-container */
+        .home-container{
+            padding-bottom: 30px;
+        }
+
+        .pakethemat-container{
+            padding-bottom: 30px;
+        }
+
+        .ricebowl-container{
+            padding-bottom: 30px;
+        }
+
+        .makanan-container{
+            padding-bottom: 30px;
+        }
+
+        .minuman-container{
+            padding-bottom: 30px;
+        }
+
+        .sidedish-container{
+            padding-bottom: 30px;
+        }
+
         /* Tampilan mobile android*/
         @media only screen and (max-width: 360px) {
             .container {
@@ -782,6 +810,31 @@ include 'config/app.php';
             .alert-modal {
                 left: 8%;
                 top: 25%;
+            }
+
+            /* padding-container */
+            .home-container{
+                padding-bottom: 50px;
+            }
+
+            .pakethemat-container{
+                padding-bottom: 50px;
+            }
+
+            .ricebowl-container{
+                padding-bottom: 50px;
+            }
+
+            .makanan-container{
+                padding-bottom: 50px;
+            }
+
+            .minuman-container{
+                padding-bottom: 50px;
+            }
+
+            .sidedish-container{
+                padding-bottom: 50px;
             }
         }
 

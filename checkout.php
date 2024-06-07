@@ -11,7 +11,7 @@ include('layout/header.php');
         if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
             foreach ($_SESSION['cart'] as $item) {
                 // Ambil harga dan jumlah dari item
-                $harga = intval(preg_replace("/[^0-9]/", "", $item['harga'])); // Menghapus karakter non-digit dan mengonversi ke integer
+                $harga = intval(preg_replace("/[^0-9]/", "", $item['harga']));
                 $jumlah = (int)$item['jumlah'];
 
                 // Hitung subtotal untuk item saat ini
@@ -20,25 +20,25 @@ include('layout/header.php');
 
                 // Tampilkan detail item dengan harga yang sesuai
                 echo "<div class='checkout-item'>";
-                echo "<h3>" . htmlspecialchars($item['nama']) . "</h3>";
-                echo "<p>Rp " . number_format($harga, 0, ',', '.') . " x " . $jumlah . " = Rp " . number_format($subtotal, 0, ',', '.') . "</p>";
+                echo "<h3 style='margin-left: 20px; font-weight: 700; font-size: 24px;'>" . htmlspecialchars($item['nama']) . "</h3>";
+                echo "<div style='margin-top: 10px; margin-bottom: 10px;'>Rp " . number_format($harga, 0, ',', '.') . " x " . $jumlah . " = Rp " . number_format($subtotal, 0, ',', '.') . "</div>";
                 echo "</div>";
             }
 
             // Tampilkan total dengan harga yang sesuai
-            echo "<p class='ppn'>*Total Harga sudah termasuk PPN.</p>";
+            echo "<div class='ppn'>*Total Harga sudah termasuk PPN.</div>";
             echo "<div class='checkout-total'>Total: Rp " . number_format($total, 0, ',', '.') . "</div>";
         } else {
             echo "<p>Keranjang kosong.</p>";
         }
         ?>
 
-        <div class="data-diri" style="margin-top: 30px;">
-            <h1 class="checkout-title">Data Diri</h1>
-            <h3 style="margin-top: 30px; margin-bottom: 5px; margin-left: 10px;">Nama: </h3>
-            <input type="text" name="costumer-name" id="costumer-name" style="margin-left: 10px;">
-            <h3 style="margin-top: 30px; margin-bottom: 5px; margin-left: 10px;">No HP: </h3>
-            <input type="text" name="costumer-number" id="costumer-number" style="margin-left: 10px;">
+        <div class="data-diri" style="margin-top: 50px;">
+            <h2 style="text-align: center; margin-top: 50px; border-top: 1px solid black; padding-top: 20px;">Data Diri</h2>
+            <h3 style="margin-bottom: 5px; margin-left: 30px; font-size: 18px;">Nama : </h3>
+            <input class="form-control" type="text" name="customer-name" id="costumer-name" style="margin-left: 10px">
+            <h3 style="margin-top: 30px; margin-bottom: 5px; margin-left: 30px; font-size: 18px;">Nomor HP : </h3>
+            <input class="form-control" type="text" name="customer-number" id="costumer-number" style="margin-left: 10px">
         </div>
 
         <h2 style="text-align: center; margin-top: 50px; border-top: 1px solid black; padding-top: 20px;">Pilih Tipe Pesanan Anda</h2>
