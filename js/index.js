@@ -52,15 +52,5 @@ const onButtonClick = () => {
     const selected = select.options[select.selectedIndex].value;
 }
 
-const a = [
-      ["John", "john@example.com", "(353) 01 222 3333"],
-      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-    ];
-
-  const b = [
-      ["Bro", "john@example.com", "(353) 01 222 3333"],
-      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-    ];
-
 select.addEventListener('change', onSelectChange)
   
