@@ -43,7 +43,6 @@ const onSelectChange = async () => {
     const selected = select.options[select.selectedIndex].value;
     const data = await getProduct(selected);
     const dataArray = data.map((dataObject) => Object.values(dataObject));
-    console.log(dataArray);
     table.updateConfig({data: dataArray}).forceRender();
 }
 
