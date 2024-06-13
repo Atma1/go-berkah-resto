@@ -45,7 +45,7 @@ const onSelectChange = async () => {
     if (message == "No data found") {
         return;
     }
-    const dataArray = data.data.map((dataObject) => Object.values(dataObject));
+    const dataArray = data.map((dataObject) => Object.values(dataObject));
     table.updateConfig({data: dataArray}).forceRender();
 }
 
