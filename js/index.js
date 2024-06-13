@@ -1,7 +1,7 @@
 import {getProduct} from './util.js';
 
-
 const select = document.getElementById("jenis-produk");
+const addNewProductButton = document.getElementById("add-product-button");
 
 const table = new gridjs.Grid({
     sort: true,
@@ -54,5 +54,6 @@ const onButtonClick = () => {
     const selected = select.options[select.selectedIndex].value;
 }
 
-select.addEventListener('change', onSelectChange)
+select.addEventListener('change', onSelectChange);
+addNewProductButton.addEventListener("click", onButtonClick);
   
