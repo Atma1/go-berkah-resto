@@ -14,8 +14,6 @@ if ($conn->connect_error) {
 
 header('Content-Type: application/json');
 
-$conn;
-
 // Check connection
 if ($conn->connect_error) {
     die(json_encode(array("error" => "Connection failed: " . $conn->connect_error)));
