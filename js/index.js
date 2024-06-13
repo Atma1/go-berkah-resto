@@ -42,6 +42,9 @@ const onSelectChange = async () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
     const data = await getProduct(selected);
+    if (data.data == "No data found") {
+        return;
+    }
     const dataArray = data.map((dataObject) => Object.values(dataObject));
     table.updateConfig({data: dataArray}).forceRender();
 }
