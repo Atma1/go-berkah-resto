@@ -53,9 +53,9 @@ if ($result->num_rows > 0 || $result->num_rows == null) {
         }
         $data[] = $row;
     }
-    echo json_encode($data);
+    echo json_encode(["status" => "success", "data"=>$data]);
 } else {
-    echo json_encode(["success" => "No data found"]);
+    echo json_encode(["status" => "success", "data"=>"No data found"]);
 }
 
 // Close connection
