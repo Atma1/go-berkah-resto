@@ -1,13 +1,14 @@
 
 
-export const getProduct = async (route) => {
+export const getProduct = async (route, productRoute) => {
     try {
         const validRoutes = ['makanan', 'sidedish', 'minuman'];
-        if (!validRoutes.includes(route)) {
+        console.log(productRoute);
+        if (!validRoutes.includes(productRoute)) {
             throw new Error('Invalid route');
         }
 
-        const response = await fetch(`../admin_dashboard/model/model.php?route=${route}`);
+        const response = await fetch(`../admin_dashboard/model/model.php?route=${route}&product=${productRoute}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

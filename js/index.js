@@ -41,7 +41,7 @@ const table = new gridjs.Grid({
 const onSelectChange = async () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
-    const {message, data} = await getProduct(selected);
+    const {message, data} = await getProduct("get", selected);
     if (message == "No data found") return;
     const dataArray = data.map((dataObject) => Object.values(dataObject));
     table.updateConfig({data: dataArray}).forceRender();
