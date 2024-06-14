@@ -1,7 +1,8 @@
-import {getProduct} from './util.js';
+import {getProduct, deleteProduct} from './util.js';
 
 const select = document.getElementById("jenis-produk");
 const addNewProductButton = document.getElementById("add-product-button");
+let dataArray;
 
 const table = new gridjs.Grid({
     sort: true,
@@ -30,7 +31,7 @@ const table = new gridjs.Grid({
                     }, 'Edit'),
                     gridjs.h('button', {
                         className: 'color: red delete-button',
-                        onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+                        onClick: () => onDeleteProductClick(row.cells[0].data)
                       }, 'Hapus')];
                   }
             }],
@@ -43,13 +44,24 @@ const onSelectChange = async () => {
     const selected = select.options[select.selectedIndex].value;
     const {message, data} = await getProduct("get", selected);
     if (message == "No data found") return;
-    const dataArray = data.map((dataObject) => Object.values(dataObject));
+    dataArray = data.map((dataObject) => Object.values(dataObject));
     table.updateConfig({data: dataArray}).forceRender();
 }
 
 const onAddButtonClick = () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
+}
+
+const onDeleteProductClick = async (productId) => {
+    const select = document.getElementById("jenis-produk");
+    const selected = select.options[select.selectedIndex].value;
+    const result = await deleteProduct("delete", selected, productId);
+    if (result) {
+        const updatedData = dataArray.filter((data) => data[0] != productId);
+        dataArray = updatedData;
+        table.updateConfig({data: dataArray}).forceRender();
+    }
 }
 
 select.addEventListener('change', onSelectChange);
