@@ -25,35 +25,33 @@ const table = new gridjs.Grid({
                 name: "Aksi",
                 formatter: (_, row) => {
                     return [gridjs.h('button', {
-                      className: 'color: red',
+                      className: 'color: red, edit-button',
                       onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
                     }, 'Edit'),
                     gridjs.h('button', {
-                        className: 'color: red',
+                        className: 'color: red delete-button',
                         onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
                       }, 'Hapus')];
                   }
             }],
     data: []
     }
-).render(document.getElementById("wrapper"));;
+).render(document.getElementById("wrapper"));
 
 const onSelectChange = async () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
     const {message, data} = await getProduct(selected);
-    if (message == "No data found") {
-        return;
-    }
+    if (message == "No data found") return;
     const dataArray = data.map((dataObject) => Object.values(dataObject));
     table.updateConfig({data: dataArray}).forceRender();
 }
 
-const onButtonClick = () => {
+const onAddButtonClick = () => {
     const select = document.getElementById("jenis-produk");
     const selected = select.options[select.selectedIndex].value;
 }
 
 select.addEventListener('change', onSelectChange);
-addNewProductButton.addEventListener("click", onButtonClick);
+addNewProductButton.addEventListener("click", onAddButtonClick);
   
