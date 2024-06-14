@@ -2,8 +2,7 @@
 
 export const getProduct = async (route, productRoute) => {
     try {
-        const validRoutes = ['makanan', 'sidedish', 'minuman'];
-        console.log(productRoute);
+        const validRoutes = ['makanan', 'sidedish', 'minuman'];;
         if (!validRoutes.includes(productRoute)) {
             throw new Error('Invalid route');
         }
