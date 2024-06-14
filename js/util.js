@@ -18,4 +18,20 @@ export const getProduct = async (route, productRoute) => {
     }
 }
 
-export default getProduct;
+export const deleteProduct = async (route, productRoute, productId) => {
+    try {
+        const response = await
+        fetch(`../admin_dashboard/model/model.php?route=${route}&product=${productRoute}&productId=${productId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const {status} = await response.json();
+        if (status == "success") {
+            return true;
+        }
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+}
+
+export default {getProduct, deleteProduct};
