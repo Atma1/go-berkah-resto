@@ -21,24 +21,25 @@ if ($conn->connect_error) {
 
 // Get the route from the URL
 $route = isset($_GET['route']) ? $_GET['route'] : '';
-$productRoute = isset($_GET['product']) ? $_GET['product'] : '';
+$product = isset($_GET['product']) ? $_GET['product'] : '';
+$productId = isset($_GET['productId']) ? $_GET['productId'] : '';
 
 // Validate the route
-$product = array('makanan', 'sidedish', 'minuman');
+$productRoute = array('makanan', 'sidedish', 'minuman');
 $crudRoute = array('add', 'delete', 'update', 'get');
 
 if (!in_array($route, $crudRoute)) {
     echo json_encode(array("error" => "Invalid route"));
     $conn->close();
     exit();
-} elseif (!in_array($productRoute, $product)) {
+} elseif (!in_array($product, $productRoute)) {
     echo json_encode(array("error" => "No product specified!"));
     $conn->close();
     exit();
 }
 
 if ($route == "get") {
-    $sql = "SELECT id, nama, harga, img, keterangan FROM $productRoute";
+    $sql = "SELECT id, nama, harga, img, keterangan FROM $product";
     $result = $conn->query($sql);
 
     // Check if the table is empty
@@ -62,8 +63,23 @@ if ($route == "get") {
     } else {
         echo json_encode(["status" => "success", "data"=>"No data found"]);
     }
-
+} elseif ($route == "delete") {
+    if ($productId == '') {
+        echo json_encode(array("error" => "No productId specified!"));
+        $conn->close();
+        exit();
+    }
+    $sql = "DELETE FROM $product WHERE id = $productId";
+    $result = $conn->query($sql);
+    echo json_encode(["status" => "success"]);
+} elseif ($route == "update") {
+    echo json_encode(array("error" => "Method not implemented"));
+    $conn->close();
+    exit();
+} elseif ($route == "add") {
+    echo json_encode(array("error" => "Method not implemented"));
+    $conn->close();
+    exit();
 }
-
 // Close connection
 $conn->close();
