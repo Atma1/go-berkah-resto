@@ -136,6 +136,46 @@ include('layout/header.php');
   </div>
 </div>
 
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="addMakananModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMakananModalLabel">Edit Produk</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-makanan-form" action="./model/process_form.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="modal_used" id="modal_used" value=""> <!-- Nilai ini akan diganti oleh JavaScript -->
+          <div class="mb-3">
+            <label for="update-product-name" class="form-label">Nama Produk</label>
+            <input type="text" class="form-control" id="update-product-name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="update-product-price" class="form-label">Harga</label>
+            <input type="text" class="form-control" id="update-product-price" name="price">
+          </div>
+          <div class="mb-3 d-flex flex-column">
+          <label for="makanan-img" class="form-label">Gambar</label>
+            <img src="" alt="image" id="update-image-preview" class="img-fluid mb-2">
+            <input type="file" class="form-control" id="update-product-price-image" name="img" accept=".png">
+          </div>
+          <div class="mb-3">
+            <label for="update-product-description" class="form-label">Keterangan</label>
+            <input type="text" class="form-control" id="update-product-description" name="description">
+          </div>
+          <div class="mb-3" id="update-makanan-category">
+            <label for="makanan-category" class="form-label">Kategori</label>
+            <input type="number" class="form-control" id="update-product-category" name="category">
+          </div>
+          <input type="number" id="update-product-id" name="product-id" hidden>
+          <input type="text" name="operation" value="update" hidden>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php
 include('layout/footer.php');
 ?>
