@@ -8,7 +8,7 @@ const table = new gridjs.Grid({
     sort: true,
     search: true,
     pagination: {
-        limit: 5
+        limit: 10
       },
     columns: [
             {
