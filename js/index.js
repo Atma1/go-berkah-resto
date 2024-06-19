@@ -1,4 +1,4 @@
-import {getAllProduct, deleteProduct, getProduct} from './util.js'
+import {getAllProduct, deleteProduct} from './util.js'
 
 const select = document.getElementById("jenis-produk");
 const addNewProductButton = document.getElementById("add-product-button");
@@ -100,6 +100,15 @@ const onDeleteProductClick = async (productId) => {
 }
 
 select.addEventListener('change', onSelectChange);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const selected = select.options[select.selectedIndex].value;
+    const productArray = ["makanan", "sidedish", "minuman"]
+    if (productArray.includes(selected)) {
+        onSelectChange();
+    }
+});
+
 
 document.getElementById('update-product-image-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
