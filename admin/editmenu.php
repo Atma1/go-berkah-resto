@@ -157,7 +157,7 @@ include('layout/header.php');
           <div class="mb-3 d-flex flex-column">
           <label for="makanan-img" class="form-label">Gambar</label>
             <img src="" alt="image" id="update-image-preview" class="img-fluid mb-2">
-            <input type="file" class="form-control" id="update-product-price-image" name="img" accept=".png">
+            <input type="file" class="form-control" id="update-product-image-input" name="img" accept=".png">
           </div>
           <div class="mb-3">
             <label for="update-product-description" class="form-label">Keterangan</label>

@@ -54,6 +54,7 @@ const onSelectChange = async () => {
 const onEditProductClick = async (row) => {
     // Fetch product data
     const selected = select.options[select.selectedIndex].value;
+    const imgElement = document.getElementById('update-image-preview');
     document.getElementById('update-product-id').value = row[0].data;
     document.getElementById('update-modal-used').value = selected;
     document.getElementById('update-product-name').value = row[1].data;
@@ -62,7 +63,23 @@ const onEditProductClick = async (row) => {
     document.getElementById('update-product-description').value = row[4].data;
     document.getElementById('update-product-category').value = row[5].data;
 
+    const imgInput = document.getElementById('update-product-image-input');
+    const imageData = imgElement.src.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+
+    // Create a new Blob object from the image data
+
+    const blob = new Blob([imageData], { type: 'image/png' }); // or 'image/jpeg' depending on the image type
+
+    // Create a new File object from the Blob
+
+    const file = new File([blob], 'image.png', { type: 'image/png'}); // or 'image/jpeg' depending on the image type
+    const dataTransfer = new DataTransfer();
+
+    dataTransfer.items.add(file);
+
+    imgInput.files = dataTransfer.files;
     // Show modal
+
     const updateModal = new bootstrap.Modal(document.getElementById('updateProductModal'));
     updateModal.show();
 
@@ -101,7 +118,7 @@ const onDeleteProductClick = async (productId) => {
 
 select.addEventListener('change', onSelectChange);
 
-document.getElementById('update-product-price-image').addEventListener('change', function(event) {
+document.getElementById('update-product-image-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
 
     if (file) {
