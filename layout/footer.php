@@ -321,122 +321,65 @@
    });
 
     //Checkout
-    function openOrderTypeModal(type) {
-        const costumerName = document.getElementById("costumer-name").value;
-        const costumerPhoneNumber = document.getElementById("costumer-number").value;
-
-        const inputFilled = costumerName && costumerPhoneNumber ? true : false;
-
-        if (!inputFilled) {
-            Swal.fire({
-                title: "Tolong isi data diri Anda!",
-                text: "Pastikan nama dan nomor HP Anda terisi.",
-                icon: "warning",
-                showCancelButton: false,
-                background: "#FFE8D6"
-            })
-            return;
-        }
-
-        if (type === 'dine-in') {
-            async function askSeatNumber() {
-                const { value: text } = await Swal.fire({
-                    input: "text",
-                    icon: "question",
-                    title: "Berapa Nomor Duduk Anda?",
-                    inputPlaceholder: "Ketikkan Nomor Tempat Duduk Anda di sini",
-                    confirmButtonText: "Selesaikan Pesanan",
-                    confirmButtonColor: "#CB997E",
-                    background: "#FFE8D6",
-                    showCloseButton: true,
-                    inputValidator: (value) => {
-                        if (!value) {
-                        return "Masukkan Nomor Duduk / Nama Anda";
-                        }
-                    }
-                });
-
-                if (text) {
-                    confirmDineInOrder();
-                }
-            }
-
-            askSeatNumber();
-        } else if (type === 'take-away') {
-            Swal.fire({
-            title: "Apakah pesanan Anda<br>sudah benar?",
-            text: "Periksa kembali, karena ini halaman terakhir!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#CB997E",
-            cancelButtonColor: "#A5A58D",
-            cancelButtonText: "Salah",
-            confirmButtonText: "Benar",
-            background: "#FFE8D6"
-            }).then((result) => {
-            if (result.isConfirmed) {
-                confirmTakeAwayOrder();
-            }
-            });
-        }
-    }
-
-    function accDineInOrder(){
-        // Tambahkan pemanggilan clear_cart.php untuk membersihkan keranjang pesanan
-        fetch('clear_cart.php', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Redirect ke halaman thank_you.php setelah membersihkan keranjang
-                window.location.href = 'thank_you.php';
-            } else {
-                alert("Terjadi kesalahan saat mengosongkan keranjang.");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function confirmDineInOrder() {
-        Swal.fire({
-            title: "Apakah pesanan Anda<br>sudah benar?",
-            text: "Periksa kembali, karena ini halaman terakhir!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#CB997E",
-            cancelButtonColor: "#A5A58D",
-            cancelButtonText: "Salah",
-            confirmButtonText: "Benar",
-            background: "#FFE8D6"
-            }).then((result) => {
-            if (result.isConfirmed) {
-                accDineInOrder();
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                openOrderTypeModal('dine-in');
-            }
-        });
-    }
-
-    function confirmTakeAwayOrder() {
-        // Proses konfirmasi pesanan Take Away
-        fetch('clear_cart.php', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'thank_you.php';
-            } else {
-                alert("Terjadi kesalahan saat mengosongkan keranjang.");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
     function cancelCheckout() {
         window.location.href = 'home.php';
     }
+
+    document.getElementById('dineInForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('dine_in_name').value;
+        const table = document.getElementById('dine_in_table').value;
+
+        if (name.trim() === '' || table.trim() === '') {
+            Swal.fire({
+                title: 'Peringatan',
+                text: 'Silakan isi nama dan nomor tempat duduk Anda.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            Swal.fire({
+                title: 'Konfirmasi Pesanan',
+                text: 'Apakah Anda yakin ingin mengkonfirmasi pesanan ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Konfirmasi',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        }
+    });
+
+    document.getElementById('takeAwayForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('take_away_name').value;
+        const phone = document.getElementById('take_away_phone').value;
+
+        if (name.trim() === '' || phone.trim() === '') {
+            Swal.fire({
+                title: 'Peringatan',
+                text: 'Silakan isi nama dan nomor HP Anda.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            Swal.fire({
+                title: 'Konfirmasi Pesanan',
+                text: 'Apakah Anda yakin ingin mengkonfirmasi pesanan ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Konfirmasi',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        }
+    });
 
     //tes
     document.querySelector('.quantity-input').addEventListener('input', function(event) {
