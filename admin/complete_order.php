@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
     $stmt->close();
 
     // Redirect kembali ke halaman admin index
-    header("Location: react.php");
+    header("Location: index.php");
     exit();
 } else {
     // Jika tidak ada order_id yang diberikan, redirect ke halaman admin index
-    header("Location: react.php");
+    header("Location: index.php");
     exit();
 }
 ?>
