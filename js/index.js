@@ -7,6 +7,9 @@ let dataArray;
 const table = new gridjs.Grid({
     sort: true,
     search: true,
+    pagination: {
+        limit: 5
+      },
     columns: [
             {
                 name: "id",
@@ -26,12 +29,12 @@ const table = new gridjs.Grid({
                 name: "Aksi",
                 formatter: (_, row) => {
                     return [gridjs.h('button', {
-                      className: 'color: red, edit-button',
-                      onClick: () => onEditProductClick(row.cells)
+                    className: 'py-2  px-4 border rounded-md text-white bg-blue-600 hover:bg-blue-800',
+                    onClick: () => onEditProductClick(row.cells)
                     }, 'Edit'),
                     gridjs.h('button', {
-                        className: 'color: red delete-button',
-                        onClick: () => onDeleteProductClick(row.cells[0].data)
+                        className: 'py-2 ml-2 px-4 border rounded-md text-white bg-red-600 hover:bg-red-800',
+                    onClick: () => onDeleteProductClick(row.cells[0].data)
                       }, 'Hapus')];
                   }
             }, 
@@ -40,7 +43,12 @@ const table = new gridjs.Grid({
                 hidden: true
             }
     ],
-    data: []
+    data: [],
+    style: {
+        td: {
+            'text-align': 'center',
+        }
+    }
 }).render(document.getElementById("wrapper"));
 
 const onSelectChange = async () => {
