@@ -144,8 +144,8 @@ include('layout/header.php');
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="add-makanan-form" action="./model/process_form.php" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="modal_used" id="modal_used" value=""> <!-- Nilai ini akan diganti oleh JavaScript -->
+        <form id="update-product-form" action="./model/process_form.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="modal_used" id="update-modal-used">
           <div class="mb-3">
             <label for="update-product-name" class="form-label">Nama Produk</label>
             <input type="text" class="form-control" id="update-product-name" name="name">
@@ -167,7 +167,7 @@ include('layout/header.php');
             <label for="makanan-category" class="form-label">Kategori</label>
             <input type="number" class="form-control" id="update-product-category" name="category">
           </div>
-          <input type="number" id="update-product-id" name="product-id" hidden>
+          <input type="number" id="update-product-id" name="product_id" hidden>
           <input type="text" name="operation" value="update" hidden>
           <button type="submit" class="btn btn-primary">Update</button>
         </form>
