@@ -63,23 +63,6 @@ const onEditProductClick = async (row) => {
     document.getElementById('update-product-description').value = row[4].data;
     document.getElementById('update-product-category').value = row[5].data;
 
-    const imgInput = document.getElementById('update-product-image-input');
-    const imageData = imgElement.src.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-
-    // Create a new Blob object from the image data
-
-    const blob = new Blob([imageData], { type: 'image/png' }); // or 'image/jpeg' depending on the image type
-
-    // Create a new File object from the Blob
-
-    const file = new File([blob], 'image.png', { type: 'image/png'}); // or 'image/jpeg' depending on the image type
-    const dataTransfer = new DataTransfer();
-
-    dataTransfer.items.add(file);
-
-    imgInput.files = dataTransfer.files;
-    // Show modal
-
     const updateModal = new bootstrap.Modal(document.getElementById('updateProductModal'));
     updateModal.show();
 

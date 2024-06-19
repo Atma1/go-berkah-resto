@@ -19,6 +19,19 @@
         document.getElementById('modal_used').value = modal;
     }
 
+    const converter = (base64Image) => {
+        const base64Data = base64Image.split(',')[1];
+        const contentType = base64Image.split(',')[0].split(':')[1].split(';')[0];
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: contentType });
+        return blob;
+    }
+
     $(document).ready(function() {
         // AJAX untuk form add-minuman-form
         $('#add-minuman-form').submit(function(e) {
@@ -132,40 +145,46 @@
         });
         // AJAX untuk form updateProductModal
         $('#update-product-form').submit(function(e) {
-            console.log($(this)[0]);
             e.preventDefault(); // Hindari pengiriman form secara default
 
             var formData = new FormData($(this)[0]); // Ambil data form
-            // $.ajax({
-            //     url: './model/process_form.php', // URL ke process_form.php
-            //     type: 'POST',
-            //     data: formData,
-            //     async: true,
-            //     cache: false,
-            //     contentType: false,
-            //     processData: false,
-            //     success: function(response) {
-            //     // Handle success
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Berhasil!',
-            //         text: 'Data Berhasil Diperbarui!',
-            //         showConfirmButton: false,
-            //         timer: 1500
-            //     }).then(() => {
-            //         // Refresh halaman jika perlu
-            //         location.reload();
-            //     });
-            //     },
-            //     error: function(xhr, status, error) {
-            //     // Handle error
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Oops...',
-            //         text: 'Terjadi kesalahan saat memperbarui data.: ' + xhr.responseText
-            //     });
-            //     }
-            // });
+            const fileInput = $('#update-product-image-input')[0];
+            const priviewSrc = document.getElementById('update-image-preview').src
+            if (fileInput.files.length === 0) {
+                const convertedImage = converter(priviewSrc)
+                formData.delete("img")
+                formData.append("img", convertedImage)
+            }
+            $.ajax({
+                url: './model/process_form.php', // URL ke process_form.php
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                // Handle success
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Data Berhasil Diperbarui!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    // Refresh halaman jika perlu
+                    location.reload();
+                });
+                },
+                error: function(xhr, status, error) {
+                // Handle error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Terjadi kesalahan saat memperbarui data.: ' + xhr.responseText
+                });
+                }
+            });
         });
     });
 </script>
