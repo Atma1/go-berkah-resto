@@ -58,7 +58,7 @@ include('layout/header.php');
             <input type="text" class="form-control" id="makanan-description" name="description">
           </div>
           <div class="mb-3">
-            <label for="makanan-category" class="form-label">Kategori</label>
+            <label for="makanan-category" class="form-label">Kategori (1=pahe, 2=rice bowl, 3=makanan, 4=promo)</label>
             <input type="number" class="form-control" id="makanan-category" name="category">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -164,7 +164,7 @@ include('layout/header.php');
             <input type="text" class="form-control" id="update-product-description" name="description">
           </div>
           <div class="mb-3" id="update-makanan-category">
-            <label for="makanan-category" class="form-label">Kategori</label>
+            <label for="makanan-category" class="form-label">Kategori (1=pahe, 2=rice bowl, 3=makanan, 4=promo)</label>
             <input type="number" class="form-control" id="update-product-category" name="category">
           </div>
           <input type="number" id="update-product-id" name="product_id" hidden>
