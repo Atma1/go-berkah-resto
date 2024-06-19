@@ -45,7 +45,7 @@ try {
                 $stmt = $pdo->prepare("INSERT INTO makanan (nama, harga, img, keterangan, kategori) VALUES (:name, :price, :imgData, :description, :category)");
                 $stmt->bindParam(':category', $category);
             } else {
-                $stmt = $pdo->prepare("UPDATE $modal_used SET nama= :name, harga= :price, img= :imgData, keterangan= :description, kategori WHERE id=$product_id");
+                $stmt = $pdo->prepare("UPDATE $modal_used SET nama= :name, harga= :price, img= :imgData, keterangan= :description, kategori= :category WHERE id=$product_id");
                 $stmt->bindParam(':category', $category);
             }
             break;
