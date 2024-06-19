@@ -55,7 +55,7 @@ const onEditProductClick = async (row) => {
     // Fetch product data
     const selected = select.options[select.selectedIndex].value;
     document.getElementById('update-product-id').value = row[0].data;
-    document.getElementById('modal_used').value = selected;
+    document.getElementById('update-modal-used').value = selected;
     document.getElementById('update-product-name').value = row[1].data;
     document.getElementById('update-product-price').value = row[2].data
     document.getElementById('update-image-preview').src = `data:image/png;base64,${row[3].data}`;
