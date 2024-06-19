@@ -13,6 +13,8 @@ $name = isset($_POST['name']) ? $_POST['name'] : null;
 $price = isset($_POST['price']) ? $_POST['price'] : null;
 $description = isset($_POST['description']) ? $_POST['description'] : null;
 $category = null; // Default category, hanya relevan untuk modal 'makanan'
+$operation = isset($_POST['operation']) ? $_POST['operation'] : null;
+$product_id = isset($_POST['product_id']) ? $_POST['product_id'] : null;
 
 // Jika modal adalah 'makanan', ambil kategori juga
 if ($modal_used === 'makanan') {
@@ -39,14 +41,27 @@ try {
     // Insert data ke dalam tabel yang sesuai (makanan, minuman, atau sidedish)
     switch ($modal_used) {
         case 'makanan':
-            $stmt = $pdo->prepare("INSERT INTO makanan (nama, harga, img, keterangan, kategori) VALUES (:name, :price, :imgData, :description, :category)");
-            $stmt->bindParam(':category', $category);
+            if (!$operation) {
+                $stmt = $pdo->prepare("INSERT INTO makanan (nama, harga, img, keterangan, kategori) VALUES (:name, :price, :imgData, :description, :category)");
+                $stmt->bindParam(':category', $category);
+            } else {
+                $stmt = $pdo->prepare("UPDATE $modal_used SET nama= :name, harga= :price, img= :imgData, keterangan= :description, kategori WHERE id=$product_id");
+                $stmt->bindParam(':category', $category);
+            }
             break;
         case 'minuman':
-            $stmt = $pdo->prepare("INSERT INTO minuman (nama, harga, img, keterangan) VALUES (:name, :price, :imgData, :description)");
+            if (!$operation) {
+                $stmt = $pdo->prepare("INSERT INTO minuman (nama, harga, img, keterangan) VALUES (:name, :price, :imgData, :description)");
+            } else {
+                $stmt = $pdo->prepare("UPDATE $modal_used SET nama= :name, harga= :price, img= :imgData, keterangan= :description WHERE id=$product_id");
+            }
             break;
         case 'sidedish':
-            $stmt = $pdo->prepare("INSERT INTO sidedish (nama, harga, keterangan, img) VALUES (:name, :price, :description, :imgData)");
+            if (!$operation) {
+                $stmt = $pdo->prepare("INSERT INTO sidedish (nama, harga, keterangan, img) VALUES (:name, :price, :description, :imgData)");
+            } else {
+                $stmt = $pdo->prepare("UPDATE $modal_used SET nama=:name, harga=:price, img=:imgData, keterangan=:description WHERE id=$product_id");
+            }
             break;
         default:
             throw new Exception("Modal yang dipilih tidak valid");
