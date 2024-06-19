@@ -70,6 +70,7 @@ const onEditProductClick = async (row) => {
     document.getElementById('update-image-preview').src = `data:image/png;base64,${row[3].data}`;
     document.getElementById('update-product-description').value = row[4].data;
     document.getElementById('update-product-category').value = row[5].data;
+    document.getElementById('update-product-image-input').value = '';
 
     const updateModal = new bootstrap.Modal(document.getElementById('updateProductModal'));
     updateModal.show();
