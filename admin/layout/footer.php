@@ -130,6 +130,43 @@
             }
         });
         });
+        // AJAX untuk form updateProductModal
+        $('#update-product-form').submit(function(e) {
+            console.log($(this)[0]);
+            e.preventDefault(); // Hindari pengiriman form secara default
+
+            var formData = new FormData($(this)[0]); // Ambil data form
+            $.ajax({
+                url: './model/process_form.php', // URL ke process_form.php
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                // Handle success
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Data Berhasil Diperbarui!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    // Refresh halaman jika perlu
+                    location.reload();
+                });
+                },
+                error: function(xhr, status, error) {
+                // Handle error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Terjadi kesalahan saat memperbarui data.: ' + xhr.responseText
+                });
+                }
+            });
+        });
     });
 </script>
 
