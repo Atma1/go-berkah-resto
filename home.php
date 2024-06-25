@@ -3,17 +3,17 @@ include('layout/header.php');
 ?>
 <div id="content" class="content">
 
-
+    <div class="home-container">
         <div id="carouselExampleAutoplaying" class="carousel slide carousel-container" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="img-crl" src="img/PromoA1.png" alt="Image 1" data-id="24" onclick="openModalIndex(this)"/>
                 </div>
                 <div class="carousel-item">
-                    <img class="img-crl" src="img/PromoA2.png" alt="Image 2" data-id="25" onclick="openModalIndex(this)"/>
+                    <img class="img-crl" src="img/PromoA2.png" alt="Image 2" data-id="28" onclick="openModalIndex(this)"/>
                 </div>
                 <div class="carousel-item">
-                    <img class="img-crl" src="img/PromoA3.png" alt="Image 3" data-id="26" onclick="openModalIndex(this)"/>
+                    <img class="img-crl" src="img/PromoA3.png" alt="Image 3" data-id="29" onclick="openModalIndex(this)"/>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -29,29 +29,25 @@ include('layout/header.php');
         <h2 style="text-align: center; margin-top: 50px; margin-bottom: -30px;">Mau Pesan Apa Hari Ini?</h2>
 
         <div class="card-container">
-            <div class="card-index" onclick="goToPage('Paket Hemat')">
-                <img src="paket-hemat.jpg" alt="Paket Hemat">
-                <h3>Paket Hemat</h3>
+            <div class="card" onclick="goToPage('Paket Hemat')">
+                <img src="img/pakethemat.png" alt="Paket Hemat" width="200" height="200">
+                <h3 style="font-weight: bolder;">Paket Hemat</h3>
             </div>
-            <div class="card-index" onclick="goToPage('Rice Bowl')">
-                <img src="rice-bowl.jpg" alt="Rice Bowl">
-                <h3>Rice Bowl</h3>
+            <div class="card" onclick="goToPage('Rice Bowl')">
+                <img src="img/ricebowl.png" alt="Rice Bowl" width="200" height="200">
+                <h3 style="font-weight: bolder;">Rice Bowl</h3>
             </div>
-            <div class="card-index" onclick="goToPage('Makanan')">
-                <img src="makanan.jpg" alt="Makanan">
-                <h3>Makanan</h3>
+            <div class="card" onclick="goToPage('Makanan')">
+                <img src="img/makanan.png" alt="Makanan" width="200" height="200">
+                <h3 style="font-weight: bolder;">Makanan</h3>
             </div>
-            <div class="card-index" onclick="goToPage('Minuman')">
-                <img src="minuman.jpg" alt="Minuman">
-                <h3>Minuman</h3>
+            <div class="card" onclick="goToPage('Minuman')">
+                <img src="img/minuman.png" alt="Minuman" width="200" height="200">
+                <h3 style="font-weight: bolder;">Minuman</h3>
             </div>
-            <div class="card-index" onclick="goToPage('Juice')">
-                <img src="juice.jpg" alt="Juice">
-                <h3>Juice</h3>
-            </div>
-            <div class="card-index" onclick="goToPage('Side Dish')">
-                <img src="side-dish.jpg" alt="Side Dish">
-                <h3>Side Dish</h3>
+            <div class="card" onclick="goToPage('Side Dish')">
+                <img src="img/sidedish.png" alt="Side Dish" width="200" height="200">
+                <h3 style="font-weight: bolder;">Side Dish</h3>
             </div>
         </div>
 
@@ -61,7 +57,6 @@ include('layout/header.php');
                 </div>
             </div>
         </div>
-
     </div>
 
 <?php include('layout/footer.php'); ?>
