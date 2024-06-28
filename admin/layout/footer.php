@@ -36,121 +36,109 @@
     }
 
     $(document).ready(function() {
-        // AJAX untuk form add-minuman-form
         $('#add-minuman-form').submit(function(e) {
-        e.preventDefault(); // Hindari pengiriman form secara default
+            e.preventDefault();
 
-        var formData = new FormData($(this)[0]); // Ambil data form
-        $.ajax({
-            url: './model/process_form.php', // URL ke process_form.php
-            type: 'POST',
-            data: formData,
-            async: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-            // Handle success
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: 'Data minuman berhasil disimpan',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                // Refresh halaman jika perlu
-                location.reload();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: './model/process_form.php',
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Data minuman berhasil disimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan saat menyimpan data minuman: ' + xhr.responseText
+                    });
+                }
             });
-            },
-            error: function(xhr, status, error) {
-            // Handle error
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Terjadi kesalahan saat menyimpan data minuman: ' + xhr.responseText
-            });
-            }
-        });
         });
 
-        // AJAX untuk form add-makanan-form
         $('#add-makanan-form').submit(function(e) {
-        e.preventDefault(); // Hindari pengiriman form secara default
+            e.preventDefault();
 
-        var formData = new FormData($(this)[0]); // Ambil data form
-        $.ajax({
-            url: './model/process_form.php', // URL ke process_form.php
-            type: 'POST',
-            data: formData,
-            async: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-            // Handle success
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: 'Data makanan berhasil disimpan',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                // Refresh halaman jika perlu
-                location.reload();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: './model/process_form.php',
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Data makanan berhasil disimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan saat menyimpan data makanan: ' + xhr.responseText
+                    });
+                }
             });
-            },
-            error: function(xhr, status, error) {
-            // Handle error
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Terjadi kesalahan saat menyimpan data makanan: ' + xhr.responseText
-            });
-            }
-        });
         });
 
-        // AJAX untuk form add-sidedish-form
         $('#add-sidedish-form').submit(function(e) {
-        e.preventDefault(); // Hindari pengiriman form secara default
+            e.preventDefault();
 
-        var formData = new FormData($(this)[0]); // Ambil data form
-        $.ajax({
-            url: './model/process_form.php', // URL ke process_form.php
-            type: 'POST',
-            data: formData,
-            async: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-            // Handle success
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: 'Data sidedish berhasil disimpan',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                // Refresh halaman jika perlu
-                location.reload();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: './model/process_form.php',
+                type: 'POST',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Data sidedish berhasil disimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan saat menyimpan data sidedish: ' + xhr.responseText
+                    });
+                }
             });
-            },
-            error: function(xhr, status, error) {
-            // Handle error
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Terjadi kesalahan saat menyimpan data sidedish: ' + xhr.responseText
-            });
-            }
         });
-        });
-        // AJAX untuk form updateProductModal
+
         $('#update-product-form').submit(function(e) {
-            e.preventDefault(); // Hindari pengiriman form secara default
+            e.preventDefault();
 
-            var formData = new FormData($(this)[0]); // Ambil data form
+            var formData = new FormData($(this)[0]);
             const fileInput = $('#update-product-image-input')[0];
             const priviewSrc = document.getElementById('update-image-preview').src
             if (fileInput.files.length === 0) {
@@ -159,7 +147,7 @@
                 formData.append("img", convertedImage)
             }
             $.ajax({
-                url: './model/process_form.php', // URL ke process_form.php
+                url: './model/process_form.php',
                 type: 'POST',
                 data: formData,
                 async: true,
@@ -167,25 +155,22 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                // Handle success
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: 'Data Berhasil Diperbarui!',
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(() => {
-                    // Refresh halaman jika perlu
-                    location.reload();
-                });
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Data Berhasil Diperbarui!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        location.reload();
+                    });
                 },
                 error: function(xhr, status, error) {
-                // Handle error
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Terjadi kesalahan saat memperbarui data.: ' + xhr.responseText
-                });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan saat memperbarui data.: ' + xhr.responseText
+                    });
                 }
             });
         });
@@ -193,29 +178,25 @@
 
     function showOrderDetails(orderCode, modalType) {
         $.ajax({
-            url: 'get_order_details.php', // File PHP yang akan menangani permintaan AJAX
+            url: 'get_order_details.php',
             type: 'POST',
             data: { order_code: orderCode },
             success: function(response) {
-                // Menampilkan detail pesanan dalam modal
                 if (modalType === 'card') {
                     $('#order-details-content-card').html(response);
 
-                    // Menampilkan kode pesanan di dalam modal
                     $('#order-details-content-card').prepend('<div style="font-size: 24px; text-align: center; font-weight: bold; margin-bottom: 3%;">Detail Pesanan ' + orderCode + '</div>');
 
-                    // Mengambil order_id berdasarkan order_code
                     $.ajax({
-                        url: 'get_order_id.php', // File PHP yang akan mengembalikan order_id berdasarkan order_code
+                        url: 'get_order_id.php',
                         type: 'POST',
                         data: { order_code: orderCode },
                         success: function(orderIdResponse) {
-                            $('#modal-order-id-card').val(orderIdResponse); // Set nilai input hidden dengan order_id untuk selesaikan pesanan
-                            $('#modal-order-id-card-cancel').val(orderIdResponse); // Set nilai input hidden dengan order_id untuk batalkan pesanan
+                            $('#modal-order-id-card').val(orderIdResponse);
+                            $('#modal-order-id-card-cancel').val(orderIdResponse);
                             var myModal = new bootstrap.Modal(document.getElementById('order-details-modal-card'));
                             myModal.show();
 
-                            // Tambahkan event listener untuk tombol "Selesaikan Pesanan"
                             $('#complete-order-form-card button').on('click', function(event) {
                                 event.preventDefault();
                                 Swal.fire({
@@ -233,7 +214,6 @@
                                 });
                             });
 
-                            // Tambahkan event listener untuk tombol "Batalkan Pesanan"
                             $('#cancel-order-form-card button').on('click', function(event) {
                                 event.preventDefault();
                                 Swal.fire({
@@ -257,10 +237,7 @@
                     });
                 } else if (modalType === 'table') {
                     $('#order-details-content-table').html(response);
-
-                    // Menampilkan kode pesanan di dalam modal
                     $('#order-details-content-table').prepend('<div style="font-size: 24px; text-align: center; font-weight: bold; margin-bottom: 3%;">Detail Pesanan ' + orderCode + '</div>');
-
                     var myModal = new bootstrap.Modal(document.getElementById('order-details-modal-table'));
                     myModal.show();
                 }
@@ -273,7 +250,7 @@
 
     $(document).ready(function() {
         $('#ordersTable').DataTable({
-            "order": [[1, "desc"]] // Urutkan berdasarkan kolom tanggal pesanan secara descending
+            "order": [[1, "desc"]]
         });
 
         $('#dateFilter').datepicker({

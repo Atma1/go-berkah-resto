@@ -43,9 +43,7 @@ $result = $conn->query($sql);
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-body" id="order-details-content-table">
-                <!-- Kode pesanan akan ditampilkan di sini -->
                 <div id="order-code-display"></div>
-                <!-- Detail pesanan akan ditampilkan di sini -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

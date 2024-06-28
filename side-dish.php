@@ -46,7 +46,6 @@ $result = $conn->query($sql);
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center;">
-                <!-- button order -->
                 <div class="order-button" onclick="pesan()">
                     <div class="order-button-wrapper">
                     <div class="order-text">Order</div>

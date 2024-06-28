@@ -15,7 +15,6 @@ include('layout/header.php');
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-body" id="order-details-content-card">
-                <!-- Detail pesanan akan ditampilkan di sini -->
             </div>
             <div class="modal-footer">
                 <form action="cancel_order.php" method="post" id="cancel-order-form-card">
@@ -26,7 +25,6 @@ include('layout/header.php');
                     <input type="hidden" id="modal-order-id-card" name="order_id" value="">
                     <button type="submit" class="btn btn-success">Selesaikan Pesanan</button>
                 </form>
-
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>

@@ -9,7 +9,6 @@ include('layout/header.php');
 
 <div id="mainContent" style="display: none;">
     <div id="content" class="content">
-
         <div class="carousel-container">
             <div class="carousel-slide">
                 <img src="img/1.jpg" alt="Image 1" onclick="openModalIndex(1)">
@@ -20,9 +19,7 @@ include('layout/header.php');
             <button id="btn-index" class="next" onclick="nextSlide()">></button>
             <div class="carousel-dots"></div>
         </div>
-
         <h2 style="text-align: center; margin-top: 50px; margin-bottom: -30px;">Mau Pesan Apa Hari Ini?</h2>
-
         <div class="card-container">
             <div class="card-index" onclick="goToPage('Paket Hemat')">
                 <img src="paket-hemat.jpg" alt="Paket Hemat">
@@ -49,15 +46,6 @@ include('layout/header.php');
                 <h3>Side Dish</h3>
             </div>
         </div>
-
-
-
-        <!-- Modal -->
-        <div id="myModal" class="modal">
-            <div id="modalContent" class="modal-content">
-            </div>
-        </div>
-
     </div>
 </div>
 

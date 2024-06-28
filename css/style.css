@@ -212,7 +212,6 @@ margin-top: 10px;
     .order-button:hover .icon {
     top: 0;
     }
-    /* Modal End */
 
     #preloader {
         position: fixed;
@@ -642,7 +641,7 @@ margin-top: 10px;
     transition: all 0.475s;
     }
 
-    /* tes */
+    /* alert modal */
     .alert-modal {
         display: none;
         position: fixed;
@@ -762,7 +761,7 @@ margin-top: 10px;
         padding-bottom: 30px;
     }
 
-    /* coba */
+    /* card tipe pesanan */
     .container-tipe-pesanan {
         display: flex;
         justify-content: center;
@@ -790,22 +789,22 @@ margin-top: 10px;
         margin: 0 1%;
     }
 
-      .card-tipe-pesanan img{
+    .card-tipe-pesanan img{
         margin-bottom: 10px;
-      }
+    }
 
-      .card-tipe-pesanan p {
+    .card-tipe-pesanan p {
         margin: 0;
-      }
+    }
       
-      .card-tipe-pesanan:hover {
+    .card-tipe-pesanan:hover {
         border: 1px solid black;
         transform: scale(1.05);
-      }
+    }
       
-      .card-tipe-pesanan:active {
+    .card-tipe-pesanan:active {
         transform: scale(0.95);
-      }
+    }
 
     /* checkout */
     .modal-dinein-header{
@@ -850,7 +849,7 @@ margin-top: 10px;
         font-size: 24px;
     }
 
-    /* thank you */
+    /* thank you page */
     .page-container {
         display: flex;
         align-items: center;

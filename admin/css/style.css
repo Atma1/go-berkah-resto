@@ -292,7 +292,6 @@ margin-top: 10px;
     .order-button:hover .icon {
     top: 0;
     }
-    /* Modal End */
 
     #preloader {
         position: fixed;
@@ -728,7 +727,7 @@ margin-top: 10px;
     transition: all 0.475s;
     }
 
-    /* tes */
+    /* alert modal */
     .alert-modal {
         display: none;
         position: fixed;
@@ -946,8 +945,6 @@ margin-top: 10px;
     .papper:active {
         transform: scale(0.9);
     }
-
-    /* history order */
 
     /* Tampilan mobile android*/
     @media only screen and (max-width: 360px) {

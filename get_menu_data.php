@@ -1,5 +1,4 @@
 <?php
-// Koneksi ke database
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,7 +14,6 @@ if ($conn->connect_error) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     
-    // Query SQL dengan parameterized query untuk menghindari SQL injection
     $sql = $conn->prepare("SELECT * FROM makanan WHERE id = ?");
     $sql->bind_param("i", $id);
     $sql->execute();
