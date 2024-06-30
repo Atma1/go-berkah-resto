@@ -4,7 +4,6 @@ include('../config/db.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_code'])) {
     $order_code = $_POST['order_code'];
 
-    // Mengambil tanggal pesanan dari tabel orders
     $sql_order = "SELECT order_date FROM orders WHERE order_code = ?";
     $stmt_order = $conn->prepare($sql_order);
     $stmt_order->bind_param("s", $order_code);
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_code'])) {
         $order_time = date('H:i', strtotime($row_order['order_date']));
     }
 
-    // Mengambil detail pesanan dari tabel order_details
     $sql_details = "SELECT * FROM order_details WHERE order_code = (SELECT order_code FROM orders WHERE order_code = ?)";
     $stmt_details = $conn->prepare($sql_details);
     $stmt_details->bind_param("s", $order_code);

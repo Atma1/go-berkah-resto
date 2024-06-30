@@ -2,7 +2,6 @@
 include('layout/header.php');
 session_start();
 
-// Hapus sesi keranjang belanja
 if (isset($_SESSION['cart'])) {
     unset($_SESSION['cart']);
 }

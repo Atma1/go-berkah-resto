@@ -17,25 +17,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.php">Beranda</a>
+        <a href="history_orders.php">Riwayat Order</a>
+        <a href="editmenu.php">Edit Menu</a>
+    </div>  
 
-<div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.php">Beranda</a>
-    <a href="history_orders.php">Riwayat Order</a>
-    <a href="editmenu.php">Edit Menu</a>
-</div>  
-
-<div class="navbar">
-    <button class="openbtn" onclick="openNav()">&#9776;</button>
-    <div class="mid-navbar">
-        <h1 style="margin-right: 10px;">Semoga</h1>
-        <img src="../img/berkah_logos.png" alt="Berkah">
-    </div>
-    <div class="profile-dropdown">
-        <img src="../img/user-tie-solid.svg" alt="Profile" class="profile-img">
-        <div class="profile-dropdown-content">
-            <a href="login.html">Logout</a>
+    <div class="navbar">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <div class="mid-navbar">
+            <h1 style="margin-right: 10px;">Semoga</h1>
+            <img src="../img/berkah_logos.png" alt="Berkah">
+        </div>
+        <div class="profile-dropdown">
+            <img src="../img/user-tie-solid.svg" alt="Profile" class="profile-img">
+            <div class="profile-dropdown-content">
+                <a href="login.html">Logout</a>
+            </div>
         </div>
     </div>
-</div>
 

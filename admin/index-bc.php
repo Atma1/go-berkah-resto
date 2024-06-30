@@ -33,7 +33,6 @@ $result = $conn->query($sql);
                 <h5 class="modal-title" id="order-details-modal-card-label">Detail Pesanan</h5>
             </div>
             <div class="modal-body" id="order-details-content-card">
-                <!-- Detail pesanan akan ditampilkan di sini -->
             </div>
             <div class="modal-footer">
                 <form action="cancel_order.php" method="post" id="cancel-order-form-card">
@@ -44,7 +43,6 @@ $result = $conn->query($sql);
                     <input type="hidden" id="modal-order-id-card" name="order_id" value="">
                     <button type="submit" class="btn btn-success">Selesaikan Pesanan</button>
                 </form>
-
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
@@ -124,14 +122,12 @@ $(document).ready(function() {
         </div>`;
         $('#notification-container').append(notificationHtml);
 
-        // Hilangkan notifikasi setelah 3 detik dengan animasi fade out
         setTimeout(function() {
             $('.notification').fadeOut(500, function() {
                 $(this).remove();
             });
         }, 5000);
 
-        // Tambahkan event listener untuk tombol X
         $('.close-notification').click(function() {
             $(this).closest('.notification').fadeOut(500, function() {
                 $(this).remove();

@@ -69,9 +69,9 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         }
 
         .item-name {
-            flex: 1; /* Adjust the flex-grow value */
-            width: 150px; /* Set a minimum width */
-            width: 150px; /* Set a maximum width */
+            flex: 1;
+            width: 150px;
+            width: 150px;
         }
 
         .quantity-container, .item-price, .delete-btn {

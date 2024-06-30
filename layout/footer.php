@@ -14,55 +14,48 @@
     }
 
     function openModal(nama, img, keterangan, harga) {
-        // Mengatur konten modal dengan data yang diberikan
         document.getElementById('modalNama').textContent = nama;
         document.getElementById('modalImg').src = img;
         document.getElementById('modalKeterangan').textContent = keterangan;
         document.getElementById('modalHarga').textContent = "Harga: " + harga;
-        
-        // Mengatur ulang nilai input jumlah ke nilai defaultnya setiap kali modal dibuka
         resetQuantityInput();
-        
-        // Membuat instance modal Bootstrap
         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
             keyboard: false
         });
-        
-        // Menampilkan modal
         myModal.show();
     }
 
     function closeModal() {
         var modal = document.getElementById('exampleModal');
         var bootstrapModal = bootstrap.Modal.getInstance(modal);
+
         if (bootstrapModal) {
             bootstrapModal.hide();
         }
     }
 
     function resetQuantityInput() {
-        var defaultQuantity = 1; // Nilai default untuk jumlah
-        document.querySelector('.quantity-input').value = defaultQuantity; // Set nilai input jumlah ke nilai default
+        var defaultQuantity = 1;
+        document.querySelector('.quantity-input').value = defaultQuantity;
     }
 
     function pesan() {
         var nama = document.getElementById('modalNama').textContent;
         var harga = document.getElementById('modalHarga').textContent.replace("Harga: ", "");
-        var jumlah = document.querySelector('.quantity-input').value; // Mengambil nilai input jumlah
+        var jumlah = document.querySelector('.quantity-input').value;
         
-        // Tambahkan item ke sesi
         fetch('add_to_cart.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nama: nama, harga: harga, jumlah: jumlah }) // Mengirimkan nilai jumlah
+            body: JSON.stringify({ nama: nama, harga: harga, jumlah: jumlah })
         })
         .then(response => response.json())
         .then(data => {
             openNotificationModal();
-            closeModal(); // Menutup modal setelah menekan tombol order
-            resetQuantityInput(); // Mengatur ulang nilai input jumlah ke nilai defaultnya setelah pesanan diproses
+            closeModal();
+            resetQuantityInput();
         })
         .catch(error => console.error('Error:', error));
     }
@@ -70,9 +63,8 @@
     function openNotificationModal() {
         var nama = document.getElementById('modalNama').innerText;
         var jumlah = document.querySelector('.quantity-input').value;
-
-        // Menutup modal sebelum menampilkan notifikasi
         var modal = bootstrap.Modal.getInstance(document.getElementById('modalIndex'));
+        
         if (modal) {
             modal.hide();
         }
@@ -85,9 +77,9 @@
         });
     }
 
-        // Tutup modal ketika pengguna mengklik di luar modal
         window.onclick = function(event) {
             var modal = document.getElementById('myModal');
+            
             if (event.target == modal) {
                 modal.style.display = "none";
             }
@@ -99,7 +91,6 @@
                     .then(data => {
                         document.getElementById('cartModalContent').innerHTML = data;
 
-                        // Membuat instance modal Bootstrap
                         var myModal = new bootstrap.Modal(document.getElementById('cartModal'), {
                             keyboard: false
                         });
@@ -111,6 +102,7 @@
 
             function closeCartModal() {
                 var myModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+
                 if (myModal) {
                     myModal.hide();
                 }
@@ -154,68 +146,51 @@
                 fetch('update_quantity.php?index=' + index + '&quantity=' + quantity)
                     .then(response => response.text())
                     .then(data => {
-                        // Memuat kembali konten keranjang setelah mengubah jumlah
                         fetchCartContent();
                     })
                     .catch(error => console.error('Error:', error));
             }
 
-            // Fungsi untuk memuat kembali konten keranjang
             function fetchCartContent() {
                 fetch('load_cart_content.php')
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById('cartModalContent').innerHTML = data;
-                        // Memperbarui total harga setelah memuat konten kembali
                         updateTotalPrice();
                     })
                     .catch(error => console.error('Error:', error));
             }
 
-            // Fungsi untuk memperbarui total harga
             function updateTotalPrice() {
                 var totalHargaElement = document.getElementById('totalHarga');
                 var totalHarga = parseFloat(totalHargaElement.dataset.totalharga);
-
-                // Memperbarui total harga berdasarkan data terbaru dari keranjang
                 var cartItems = document.querySelectorAll('.cart-item');
                 cartItems.forEach(item => {
                     var hargaElement = item.querySelector('.harga');
                     var jumlahElement = item.querySelector('.quantity-input');
                     var harga = parseFloat(hargaElement.dataset.harga);
                     var jumlah = parseInt(jumlahElement.value);
-
                     totalHarga += harga * jumlah;
                 });
-
-                // Menampilkan total harga yang diperbarui
                 totalHargaElement.textContent = "Total Harga: Rp " + number_format(totalHarga, 0, ',', '.');
             }
 
-            //Tanda
-            // Decrease quantity
             function decreaseQuantity(button) {
                 var input = button.nextElementSibling;
                 var value = parseInt(input.value, 10);
                 value = isNaN(value) ? 1 : value;
                 value = value > 1 ? value - 1 : 1;
                 input.value = value;
-
-                // Get the item index from the input's data attribute
                 var index = input.getAttribute('data-index');
                 updateQuantity(index, value);
             }
 
-            // Increase quantity
             function increaseQuantity(button) {
                 var input = button.previousElementSibling;
                 var value = parseInt(input.value, 10);
                 value = isNaN(value) ? 1 : value;
                 value++;
-
                 input.value = value;
-
-                // Get the item index from the input's data attribute
                 var index = input.getAttribute('data-index');
                 updateQuantity(index, value);
             }
@@ -229,7 +204,6 @@
             let carousel = document.querySelector(".carousel");
             let items = carousel.querySelectorAll(".item");
 
-            // Function to show a specific item
             function showItem(index) {
                 items.forEach((item, idx) => {
                 item.classList.remove("active");
@@ -239,7 +213,6 @@
                 });
             }
 
-            // Event listeners for buttons
             document.querySelector(".prev").addEventListener("click", () => {
                 let index = [...items].findIndex((item) =>
                 item.classList.contains("active")
@@ -257,7 +230,6 @@
 
     //Card index
     function goToPage(page) {
-        // Redirect ke halaman sesuai judul card
         switch (page) {
             case 'Paket Hemat':
                 window.location.href = 'paket_hemat.php';
@@ -301,24 +273,23 @@
                 console.error('Gagal mengambil data');
             }
         };
-
         xhr.send();
     }
 
-   //preloading screen
-   window.addEventListener('load', function() {
-       const preloader = document.getElementById('preloader');
-       const mainContent = document.getElementById('mainContent');
+    //preloading screen
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        const mainContent = document.getElementById('mainContent');
 
-       setTimeout(function() {
-           document.getElementById('preloader').style.opacity = '0'; // Mengatur opacity menjadi 0
-           setTimeout(function() {
-               preloader.style.display = 'none'; // Sembunyikan preloading screen setelah transisi selesai
-               mainContent.style.display = 'block'; // Tampilkan konten utama
-               window.location.href = 'home.php'; // Redirect ke halaman home.php
-           }, 750); // Tunggu 1 detik sebelum menyembunyikan preloading screen
-       }, 3000); // Tampilkan pesan selamat datang selama 3 detik
-   });
+        setTimeout(function() {
+            document.getElementById('preloader').style.opacity = '0';
+            setTimeout(function() {
+                preloader.style.display = 'none';
+                mainContent.style.display = 'block';
+                window.location.href = 'home.php';
+            }, 750);
+        }, 3000);
+    });
 
     //Checkout
     function cancelCheckout() {
@@ -381,7 +352,6 @@
         }
     });
 
-    //tes
     document.querySelector('.quantity-input').addEventListener('input', function(event) {
         var value = event.target.value;
         if (!(/^\d+$/.test(value))) {
@@ -391,7 +361,6 @@
                 confirmButtonColor: "#CB997E",
                 background: "#FFE8D6"
             });
-            // Mengatur kembali nilai input ke nilai sebelumnya
             event.target.value = value.slice(0, -1);
         }
     });
